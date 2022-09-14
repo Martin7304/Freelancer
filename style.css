@@ -1,0 +1,288 @@
+:root {
+    --blanco: #ffffff;
+    --negro: #212121;
+    --primario: #ffc107;
+    --secundario: #0097a7;
+    --gris: #757575;
+
+}
+
+html {
+    font-size: 62.5%;
+    /* este codigo nos ayuda junto al codigo en el body " font-size 16px " a que cada rem sea igual a 10px */
+    box-sizing: border-box;
+    /* este codigo nos ayuda junto a el de abajo a que los boredes tengan un total de px sin que se sumen el padding con los bordes y etc ejemplo, si le coloco un height de 450 y un padding de 20 el alto va a seguir siendo 450 */
+    scroll-snap-type: y mandatory; /* esto sirve para hacer un scrool controlado, nosotos decidimos donde para, puede ser de arriba hacia abajo con y  o izquierda a derecha x */
+
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-size: 16px;
+    font-family: 'Krub', sans-serif;
+    background-image: linear-gradient(to top, #dfe9f3 0%, var(--blanco) 100%);
+    /* Esto se utiliza para dar degrade de color, primero elejimos hacia a donde va, luego los colores */
+}
+
+.sombra {
+    box-shadow: 0px 5px 15px 0px rgba(99, 96, 99, 0.56);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3, 8rem;
+}
+
+h1,
+h2,
+h3 {
+    text-align: center;
+}
+
+span {
+    font-size: 2rem;
+}
+
+.titulo {
+    text-align: center;
+    font-size: 2.8rem;
+}
+
+.contenedor {
+    max-width: 120rem;
+    /* va a tomar 120px solo cuando este desponible o como maximos, sino toma el 100% */
+    margin: 0px auto;
+}
+
+.navegacion-principal {
+    display: flex;
+    flex-direction: column;
+}
+
+.navegacion-principal a {
+    display: block;
+    text-align: center;
+    padding: 1rem;
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.navegacion-principal a:hover {
+    background-color: var(--primario);
+    color: var(--negro);
+}
+
+.nav-bg {
+    background-color: var(--secundario);
+}
+
+
+@media (min-width: 768px) {
+
+    /* los media queries mas utilizados son: 480px - para celular  /  768px - para tablet  /  1140px - para monitores  /  1400px - para monitores mas grandes */
+    .navegacion-principal {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.hero {
+    background-image: url(hero.jpg);
+    /* para llamar a la imagen */
+    background-repeat: no-repeat;
+    /* para que la imagen no se repita si no logra cubrir toda la pantalla */
+    background-size: cover;
+    /* para que la imagen cubra toda la pantalla */
+    height: 45rem;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.contenido-hero {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* con estos codigos podemos centrar todo tanto vertival como horizontal */
+    flex-direction: column;
+
+    position: absolute;
+    /* el position absolute lo vamos a utilizar para el zombreado de imagenes, para utilizarlo, su padre debe tener posicion relative */
+    background-color: rgba(0, 0, 0, .5);
+    width: 100%;
+    height: 100%;
+    /* top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;  a esto se le llama cordenadas, se utiliza para ubicar o dar indicaciones de la posicion */
+}
+
+.contenido-hero h2,
+.contenido-hero p {
+    color: #ffffff;
+}
+
+.boton {
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 1rem;
+    font-size: 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    /* para colocar la letra en mayuscula, sirve para en caso de tener que sacarla sea mas facil */
+    font-weight: 700;
+    border-radius: .5rem;
+    width: 90%;
+    text-align: center;
+    border: none;
+}
+
+.boton:hover{
+    cursor: pointer; /* regresa la mano al pasar por el boton */
+}
+
+@media (min-width: 768px) {
+    .boton {
+        width: auto;
+        /* reinicia el width   */
+    }
+}
+
+/*SERVICIOS*/
+
+/* SCROLL */
+.servicios,
+.navegacion-principal,
+.formulario{ /* AQUI DEFINIMOS DONDE SERAN LAS PARADAS DEL SCROLL */
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+
+@media (min-width: 768px) {
+    .servicios{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr; /* esto nos ayuda a dividir en fracciones, cada 1fr es una faccion, tambien puede ser 1fr 1fr 2fr y el 2fr ecuparia mas espacio */
+        /* tambien puede ser grid-template-columns: (3, 1fr ) */   
+        column-gap: 2rem; /* separacion entre columnas, es parecido al pading */
+    }
+}
+
+.servicios .iconos{
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+.servicio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.servicio p{
+    line-height: 2; /* espacio entre linea y linea */
+}
+
+.servicio h3{
+    color: var(--secundario);
+    font-weight: 400;
+}
+
+/* CONTACTO */
+
+.formulario fieldset{
+    border: none;
+}
+
+.formulario{
+    background-color: var(--gris);
+    margin: 0 auto; /* sirve para centrar automaticamente */
+    width: min(60rem, 100%); /* esto lo que hace es utilizar la medida mas pequeña, ya sea la de la pantalla o la colocada */
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.formulario legend{
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--primario);
+}
+
+@media (min-width: 768px) {
+    .contenedor-campos{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto auto 23rem;
+        column-gap: 1rem;
+    }
+
+    .campos:nth-child(3), /* esto sirve en caso de que muchos elementos tengan la misma clase, llamar a 1 de ellos en particular */
+    .campos:nth-child(4){
+        grid-column: 1 /3;
+    }
+
+}
+
+
+.campos{
+    margin-bottom: 1rem;
+}
+
+.campos label{
+    color: var(--blanco);
+    font-weight: 700;
+    margin-bottom: .5rem;
+    display: block;
+}
+.input-text{
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
+
+.campos textarea{
+    height: 20rem;
+}
+
+/* UTILIDADES */
+
+.w-sm-100{
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .w-sm-100{
+        width: auto;
+    }
+}
+
+.flex{
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* FOOTER */
+
+footer{
+    text-align: center;
+}
